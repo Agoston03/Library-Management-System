@@ -1,0 +1,127 @@
+<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>535</x><y>310</y><w>135</w><h>140</h></coordinates><panel_attributes>Book
+-
+-title: String
+-author: String
+-yearOfTheRelease: int
+-category: String
+-loanedBy: LibraryMember
+-
++setTitle(title: String): void
++setAuthor(author: String): void
++setYearOfTheRelease(year: int): void
++setCategory(category: String): void
++setLoanedBy(member: LibraryMember): void
++getTitle(): String
++getAuthor(): String
++getYearOfTheRelease(): String
++getCategory(): String
++getLoaner(): LibraryMember</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>130</y><w>315</w><h>130</h></coordinates><panel_attributes>Library
+--
+-members: ArrayList&lt;LibraryMembers&gt;
+-books: ArrayList&lt;Book&gt;
+-verification:  Dataverification
+-
++getBooks(): ArrayList&lt;Book&gt;
++getMembers(): ArrayList&lt;LibraryMember&gt;
++addBook(title: String, author: String, yearOfTheRelease: String, category: String): boolean
++modifyBook(idx: int, title: String, author: String, yearOfTheRelease: String, category: String): boolean
++removeBook(idx: int): boolean
++addMember(name: String, birthYear: String, phoneNumber: String): boolean
++rentBook(title: String, author: String, yearOfTheRelease: String, name: String, phoneNumber: String): boolean
++returnBook(title: String, author: String, yearOfTheRelease: String): boolean
++modifyMember(idx: int, name: String, birthYear: String, phoneNumber:String): boolean
++removeMember(idx: int): boolean
++save(): void
++load(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>410</x><y>310</y><w>115</w><h>90</h></coordinates><panel_attributes>LibraryMember
+--
+-name: String
+-birthYear: int
+-phoneNumber: String
+-
++getName(): String
++getbirthYear(): String
++getPhoneNumber(): String
++setName(name: String): void
++setBirthYear(year: int): void
++setPhoneNumber(phoneNumber: String): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>365</y><w>115</w><h>35</h></coordinates><panel_attributes>&lt;interface&gt;
+Searching
+--
++execute(String arg): ArrayList&lt;Book&gt; </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>815</x><y>555</y><w>215</w><h>65</h></coordinates><panel_attributes>BookSearching
+--
+-books: static ArrayList&lt;Book&gt;
+--
++searchByTitle(title: String ): ArrayList&lt;Book&gt;
++searchByAuthor(author: String ): ArrayList&lt;Book&gt;
++searchByYearOfTheRelease(yearOfTheRelease: String ):  ArrayList&lt;Book&gt;
++searchByLoaner(phoneNumber: String ): ArrayList&lt;Book&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>935</x><y>395</y><w>15</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;320</additional_attributes></element><element><id>UMLClass</id><coordinates><x>115</x><y>310</y><w>285</w><h>50</h></coordinates><panel_attributes>DataVerification
+--
++verifyBook (title: String,author:String; yearOfTheRelease: String): boolean
++verifyMember (name: String,birthYear: String,phoneNumber: String): boolean
++libraryContainsBook(title:String ,author:String , yearOfTheRelease: String ,books: ArrayList&lt;Book&gt;)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>255</y><w>120</w><h>65</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>220;10;220;60;10;60;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>180</y><w>105</w><h>55</h></coordinates><panel_attributes>LibraryFrame
+--
+-panelForBooks: BookPanel
+-panelForMembers: MemberPanel
+-library: Library
+--
++LibraryFrame(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>580</x><y>210</y><w>180</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>340;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>685</x><y>630</y><w>180</w><h>85</h></coordinates><panel_attributes>BookTableModel
+--
+-books: ArrayList&lt;Book&gt; 
+-columnNames: String[]
+--
++BookTableModel(ArrayList&lt;Book&gt; books): void
++getRowCount(): int
++getColumnCount(): int
++getColumnName(columnIndex: int ): String
++getValueAt(rowIndex: int , columnIndex: int ): Object
++setBooks(books: ArrayList&lt;Book&gt;): void
++refresh():void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>685</x><y>310</y><w>175</w><h>195</h></coordinates><panel_attributes>BookPanel
+--
+-adding: JButton
+-loaning: JButton
+-returnBook: JButton
+-searchingBy: JMenu
+-searchingByTitle: JMenuItem
+-searchingByAuthor: JMenuItem
+-searchingByYearOfTheRelease: JMenuItem
+-searchByPhoneNumber: JMenuItem
+-searchingField: JTextField
+-submitSearching: JButton
+-resetTable: JButton
+-library: Library 
+-modelForBooks: BookTableModel 
+-table: JTable
+-labels: String[] 
+--
++BookPanel(library: Library , bookModel: BookTableModel )
+-initComponents()
+-createErrorMessage(parnet: JFrame ,label: String )
+-addingFunction()
+-modifyingAndRemovingFunction()
+-rentingFunction()
+-returnBookFunction()
+-searchingFunction()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>445</y><w>105</w><h>235</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;450;190;450</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>500</y><w>15</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;260</additional_attributes></element><element><id>Relation</id><coordinates><x>800</x><y>230</y><w>15</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>855</x><y>340</y><w>35</w><h>225</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;10;50;430</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1050</x><y>435</y><w>180</w><h>80</h></coordinates><panel_attributes>MemberTableModel
+--
+-members: ArrayList&lt;LibraryMember&gt;
+-columnNames: String[] 
+--
++ MemberTableModel(members: ArrayList&lt;LibraryMember&gt;)
++ getRowCount(): int
++ getColumnCount(): int
++ getColumnName(columnIndex: int): String
++ getValueAt(rowIndex: int, columnIndex: int): Object
++ refresh(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1050</x><y>305</y><w>290</w><h>100</h></coordinates><panel_attributes>MemberPanel
+--
+-library: Library
+-adding: JButton
+-modelForMembers: MemberTableModel
+-modelForBook: BookTableModel
+-table: JTable
+-labels: String[]
+--
++ MemberPanel(library: Library, memberModel: MemberTableModel, bookModel: BookTableModel)
+- initComponents(): void
+- createErrorMessage(parent: JFrame, label: String): JDialog
+- addingFunction(): void
+- removingAndModifyingFunction(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>850</x><y>210</y><w>210</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;240;10;240;280;400;280</additional_attributes></element><element><id>Relation</id><coordinates><x>1100</x><y>400</y><w>15</w><h>45</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>255</y><w>15</w><h>65</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>515</x><y>255</y><w>115</w><h>65</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;210;60;210;110</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>395</y><w>570</w><h>440</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>20;10;10;860;1100;860;1100;170;1120;170</additional_attributes></element><element><id>Relation</id><coordinates><x>860</x><y>360</y><w>200</w><h>320</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;620;350;620;350;10;380;10</additional_attributes></element></diagram>
